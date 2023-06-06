@@ -1,15 +1,15 @@
 FROM debian:bullseye-slim
-MAINTAINER github.com/Luminaire1337
 ENV TERM=xterm-256color
 EXPOSE 22003/udp 22005/tcp 22126/udp
 
-RUN apt-get update \
-	&& apt-get -y upgrade \
-	&& apt-get -y install \
-    	libreadline8 \
-    	libncursesw5 \
-		unzip \
-    	wget \
+RUN apt-get update && apt-get install -y \
+	unzip \
+	wget \
+	default-libmysqlclient-dev \
+	libncurses5-dev \
+	libncursesw5-dev \
+	libncurses5 \
+	libncursesw5 \
 	&& rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src
